@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ProjectT1.Datos;
+
 namespace ProjectT1
 {
     public class Program
@@ -5,6 +8,9 @@ namespace ProjectT1
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<ApplicationDbContext>(opciones =>
+            opciones.UseSqlServer(builder.Configuration.GetConnectionString("sql")));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -24,7 +30,7 @@ namespace ProjectT1
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Vehiculos}/{action=Index}/{id?}");
 
             app.Run();
         }
