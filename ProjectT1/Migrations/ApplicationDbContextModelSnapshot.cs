@@ -74,10 +74,7 @@ namespace ProjectT1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("IdModelo"));
 
-                    b.Property<int?>("IdMarca")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MarcaIdMarca")
+                    b.Property<int>("MarcaId")
                         .HasColumnType("int");
 
                     b.Property<string>("NomModelo")
@@ -86,7 +83,7 @@ namespace ProjectT1.Migrations
 
                     b.HasKey("IdModelo");
 
-                    b.HasIndex("MarcaIdMarca");
+                    b.HasIndex("MarcaId");
 
                     b.ToTable("Modelo");
 
@@ -94,31 +91,31 @@ namespace ProjectT1.Migrations
                         new
                         {
                             IdModelo = 1,
-                            IdMarca = 1,
+                            MarcaId = 1,
                             NomModelo = "Modelo1"
                         },
                         new
                         {
                             IdModelo = 2,
-                            IdMarca = 2,
+                            MarcaId = 1,
                             NomModelo = "Modelo2"
                         },
                         new
                         {
                             IdModelo = 3,
-                            IdMarca = 3,
+                            MarcaId = 2,
                             NomModelo = "Modelo3"
                         },
                         new
                         {
                             IdModelo = 4,
-                            IdMarca = 4,
+                            MarcaId = 2,
                             NomModelo = "Modelo4"
                         },
                         new
                         {
                             IdModelo = 5,
-                            IdMarca = 5,
+                            MarcaId = 3,
                             NomModelo = "Modelo5"
                         });
                 });
@@ -142,11 +139,7 @@ namespace ProjectT1.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("IdModelo")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ModeloIdModelo")
+                    b.Property<int>("ModeloId")
                         .HasColumnType("int");
 
                     b.Property<string>("NroPlaca")
@@ -155,7 +148,7 @@ namespace ProjectT1.Migrations
 
                     b.HasKey("IdVehiculo");
 
-                    b.HasIndex("ModeloIdModelo");
+                    b.HasIndex("ModeloId");
 
                     b.ToTable("Vehiculo");
 
@@ -166,7 +159,7 @@ namespace ProjectT1.Migrations
                             Anio = 2021,
                             Color = "Rojo",
                             EstPer = "Bueno",
-                            IdModelo = 1,
+                            ModeloId = 1,
                             NroPlaca = "Placa1"
                         },
                         new
@@ -175,7 +168,7 @@ namespace ProjectT1.Migrations
                             Anio = 2022,
                             Color = "Azul",
                             EstPer = "Excelente",
-                            IdModelo = 2,
+                            ModeloId = 2,
                             NroPlaca = "Placa2"
                         },
                         new
@@ -184,7 +177,7 @@ namespace ProjectT1.Migrations
                             Anio = 2023,
                             Color = "Amarillo",
                             EstPer = "Regular",
-                            IdModelo = 3,
+                            ModeloId = 3,
                             NroPlaca = "Placa3"
                         },
                         new
@@ -193,7 +186,7 @@ namespace ProjectT1.Migrations
                             Anio = 2024,
                             Color = "Rosado",
                             EstPer = "Optimo",
-                            IdModelo = 4,
+                            ModeloId = 4,
                             NroPlaca = "Placa4"
                         },
                         new
@@ -202,7 +195,7 @@ namespace ProjectT1.Migrations
                             Anio = 2025,
                             Color = "Verde",
                             EstPer = "Pesimo",
-                            IdModelo = 5,
+                            ModeloId = 5,
                             NroPlaca = "Placa5"
                         });
                 });
@@ -211,7 +204,9 @@ namespace ProjectT1.Migrations
                 {
                     b.HasOne("ProjectT1.Models.Marca", "Marca")
                         .WithMany("Modelos")
-                        .HasForeignKey("MarcaIdMarca");
+                        .HasForeignKey("MarcaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Marca");
                 });
@@ -220,7 +215,9 @@ namespace ProjectT1.Migrations
                 {
                     b.HasOne("ProjectT1.Models.Modelo", "Modelo")
                         .WithMany("Vehiculos")
-                        .HasForeignKey("ModeloIdModelo");
+                        .HasForeignKey("ModeloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Modelo");
                 });

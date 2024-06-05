@@ -7,8 +7,8 @@ namespace ProjectT1.Models
         [Key]
         public int? IdModelo { get; set; }
         public string NomModelo { get; set; }
-        public int? IdMarca { get; set; }
-        public Marca? Marca { get; set; }
+        public int MarcaId { get; set; }
+        public Marca Marca { get; set; }
         public ICollection<Vehiculo> Vehiculos { get; set; }
     }
 } 

@@ -22,19 +22,19 @@ namespace ProjectT1.Datos
               );
 
             modelBuilder.Entity<Modelo>().HasData(
-                new Modelo { IdModelo = 1, NomModelo = "Modelo1", IdMarca = 1 },
-                new Modelo { IdModelo = 2, NomModelo = "Modelo2", IdMarca = 2 },
-                new Modelo { IdModelo = 3, NomModelo = "Modelo3", IdMarca = 3 },
-                new Modelo { IdModelo = 4, NomModelo = "Modelo4", IdMarca = 4 },
-                new Modelo { IdModelo = 5, NomModelo = "Modelo5", IdMarca = 5 }
+                new Modelo { IdModelo = 1, NomModelo = "Modelo1", MarcaId = 1 },
+                new Modelo { IdModelo = 2, NomModelo = "Modelo2", MarcaId = 1 },
+                new Modelo { IdModelo = 3, NomModelo = "Modelo3", MarcaId = 2 },
+                new Modelo { IdModelo = 4, NomModelo = "Modelo4", MarcaId = 2 },
+                new Modelo { IdModelo = 5, NomModelo = "Modelo5", MarcaId = 3 }
             );
 
             modelBuilder.Entity<Vehiculo>().HasData(
-                new Vehiculo { IdVehiculo = 1, NroPlaca = "Placa1", IdModelo = 1, Anio = 2021, Color = "Rojo", EstPer = "Bueno" },
-                new Vehiculo { IdVehiculo = 2, NroPlaca = "Placa2", IdModelo = 2, Anio = 2022, Color = "Azul", EstPer = "Excelente" },
-                new Vehiculo { IdVehiculo = 3, NroPlaca = "Placa3", IdModelo = 3, Anio = 2023, Color = "Amarillo", EstPer = "Regular" },
-                new Vehiculo { IdVehiculo = 4, NroPlaca = "Placa4", IdModelo = 4, Anio = 2024, Color = "Rosado", EstPer = "Optimo" },
-                new Vehiculo { IdVehiculo = 5, NroPlaca = "Placa5", IdModelo = 5, Anio = 2025, Color = "Verde", EstPer = "Pesimo" }
+                new Vehiculo { IdVehiculo = 1, NroPlaca = "Placa1", ModeloId = 1, Anio = 2021, Color = "Rojo", EstPer = "Bueno" },
+                new Vehiculo { IdVehiculo = 2, NroPlaca = "Placa2", ModeloId = 2, Anio = 2022, Color = "Azul", EstPer = "Excelente" },
+                new Vehiculo { IdVehiculo = 3, NroPlaca = "Placa3", ModeloId = 3, Anio = 2023, Color = "Amarillo", EstPer = "Regular" },
+                new Vehiculo { IdVehiculo = 4, NroPlaca = "Placa4", ModeloId = 4, Anio = 2024, Color = "Rosado", EstPer = "Optimo" },
+                new Vehiculo { IdVehiculo = 5, NroPlaca = "Placa5", ModeloId = 5, Anio = 2025, Color = "Verde", EstPer = "Pesimo" }
             );
 
 
