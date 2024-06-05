@@ -58,12 +58,14 @@ namespace ProjectT1.Controllers
         // GET: Vehiculos/Create
         public IActionResult Create()
         {
+            // Obtén los modelos desde la base de datos
+            var modelos = _context.Modelo.ToList();
+
+            // Pasa los modelos a la vista usando ViewBag
+            ViewBag.Modelos = new SelectList(modelos, "IdModelo", "NomModelo");
+
             return View();
         }
-
-        // POST: Vehiculos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdVehiculo,NroPlaca,IdModelo,Anio,Color,EstPer")] Vehiculo vehiculo)
@@ -169,5 +171,14 @@ namespace ProjectT1.Controllers
         {
           return (_context.Vehiculo?.Any(e => e.IdVehiculo == id)).GetValueOrDefault();
         }
+
+        //[HttpGet]
+        //public JsonResult ObtenerMarcas(int modeloID)
+        //{
+        //    var marcas = _context.Marca.Where(c => c. == modeloID).ToList();
+        //    return Json(marcas);
+        //}
+
+
     }
 }

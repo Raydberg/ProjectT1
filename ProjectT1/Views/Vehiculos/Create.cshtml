@@ -12,33 +12,44 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NroPlaca" class="control-label"></label>
-                <input asp-for="NroPlaca" class="form-control" />
+            <div class="form-floating mb-3">
+                <input asp-for="IdVehiculo" id="id_vehiculo" class="form-control" placeholder=" " />
+                <label asp-for="IdVehiculo" for="id_vehiculo" class="control-label">Id Vehiculo</label>
+                <span asp-validation-for="IdVehiculo" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="NroPlaca" class="form-control" id="nro_marca" placeholder=" " />
+                <label asp-for="NroPlaca" class="control-label" for="nro_marca">N°Placa</label>
                 <span asp-validation-for="NroPlaca" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ModeloId" class="control-label"></label>
-                <input asp-for="ModeloId" class="form-control" />
-                <span asp-validation-for="ModeloId" class="text-danger"></span>
+            <div class="form-group mb-3">
+                <label for="modeloDropdown">Modelo :</label>
+                <select id="modeloDropdown" class="form-control" asp-items="ViewBag.Modelos">
+                    <option value="">Seleccione Modelo</option>
+                </select>
+                <span asp-validation-for="Modelo.NomModelo" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Anio" class="control-label"></label>
-                <input asp-for="Anio" class="form-control" />
+
+            <div class="form-group mb-3">
+               
+                <label for="marcaDropdown">Marca :</label>
+                <select id="marcaDropdown" class="form-control" disabled >
+                    <option value="">Selecione una Marca</option>
+                </select>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <input asp-for="Anio" type="date" class="form-control" id="anio" placeholder=" " />
+                <label asp-for="Anio" class="control-label" for="anio">Año</label>
                 <span asp-validation-for="Anio" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
+            <div class="form-floating mb-3">
+                <input asp-for="Color" class="form-control" id="color" placeholder=" " />
+                <label asp-for="Color" class="control-label" for="color">Color</label>
                 <span asp-validation-for="Color" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EstPer" class="control-label"></label>
-                <input asp-for="EstPer" class="form-control" />
-                <span asp-validation-for="EstPer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-floating mb-3">
+                <input type="submit" value="Crear" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>
@@ -51,3 +62,5 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/Jquery.js"></script>
