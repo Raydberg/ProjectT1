@@ -56,28 +56,35 @@ namespace ProjectT1.Controllers
         }
 
         // GET: Vehiculos/Create
+        // GET: Vehiculos/Create
         public IActionResult Create()
         {
-            // Obtén los modelos desde la base de datos
-            var modelos = _context.Modelo.ToList();
+            ViewBag.Marcas = new SelectList(_context.Marca, "IdMarca", "NomMarca");
+            ViewBag.Modelos = new SelectList(_context.Modelo, "IdModelo", "NomModelo");
+            
+            // Obtén las marcas desde la base de datos
+            var marcas = _context.Marca.ToList();
 
-            // Pasa los modelos a la vista usando ViewBag
-            ViewBag.Modelos = new SelectList(modelos, "IdModelo", "NomModelo");
+            // Pasa las marcas a la vista usando ViewBag
+            ViewBag.Marcas = new SelectList(marcas, "IdMarca", "NomMarca");
 
             return View();
         }
+        // POST: Vehiculos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdVehiculo,NroPlaca,IdModelo,Anio,Color,EstPer")] Vehiculo vehiculo)
+        public async Task<IActionResult> Create(Vehiculo vehiculo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vehiculo);
+                _context.Vehiculo.Add(vehiculo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(vehiculo);
         }
+
+
 
         // GET: Vehiculos/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -172,12 +179,18 @@ namespace ProjectT1.Controllers
           return (_context.Vehiculo?.Any(e => e.IdVehiculo == id)).GetValueOrDefault();
         }
 
-        //[HttpGet]
-        //public JsonResult ObtenerMarcas(int modeloID)
-        //{
-        //    var marcas = _context.Marca.Where(c => c. == modeloID).ToList();
-        //    return Json(marcas);
-        //}
+        [HttpGet]
+        public JsonResult ObtenerModelos(int idMarca)
+        {
+            var modelos = _context.Modelo
+                .Where(m => m.MarcaId == idMarca)
+                .Select(m => new { idModelo = m.IdModelo, nomModelo = m.NomModelo })
+                .ToList();
+            return Json(modelos);
+        }
+
+
+        
 
 
     }

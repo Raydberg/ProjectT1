@@ -1,25 +1,30 @@
 ﻿$(document).ready(function () {
-
-    $("#modeloDropdown").change(function () {
-        var modeloID = $(this).val();
-
-        if (modeloID) {
+    $("#marcaDropdown").change(function () {
+        var idMarca = $(this).val();
+        $("#modeloDropdown").empty().append('<option value="">Seleccione Modelo</option>').prop("disabled", true);
+        if (idMarca) {
             $.ajax({
-                url: "/Vehiculos/ObtenerMarcas",
+                url: "/Vehiculos/ObtenerModelos",
                 type: "GET",
-                data: { modeloID: modeloID },
-                success: function (marcas) {
-                    $("#marcaDropdown").empty().append("<option value = ''> Selecione una marca </option>").prop("disabled", false);
-                    $.each(marcas, function (index, marca) {
-                        $("#marcaDropdown").append("<option value = '" + marca.IdMarca + "'>" + marca.NomMarca + "</option>");
+                data: { idMarca: idMarca },
+                success: function (modelos) {
+                    $.each(modelos, function (index, modelo) {
+                        $("#modeloDropdown").append('<option value="' + modelo.idModelo + '">' + modelo.nomModelo + '</option>');
                     });
-
-                    $("#marcaDropdown").prop("disabled", false);
+                    $("#modeloDropdown").prop("disabled", false);
                 }
             })
         }
-        else {
-            $("#marcaDropdown").empty().append("<option value = ''> Selecione una marca </option>").prop("disabled", true);
-        }
-    });
-});
+    })
+})
+
+
+$(document).ready(function () {
+
+    $("#marcaDropdown").change(function () {
+        var marcaID = $(this).val();
+        console.log("idMarca : " + marcaID)
+
+    })
+
+})

@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating mb-3">
                 <input asp-for="IdVehiculo" id="id_vehiculo" class="form-control" placeholder=" " />
@@ -22,24 +22,26 @@
                 <label asp-for="NroPlaca" class="control-label" for="nro_marca">N°Placa</label>
                 <span asp-validation-for="NroPlaca" class="text-danger"></span>
             </div>
+
+
             <div class="form-group mb-3">
-                <label for="modeloDropdown">Modelo :</label>
-                <select id="modeloDropdown" class="form-control" asp-items="ViewBag.Modelos">
-                    <option value="">Seleccione Modelo</option>
+                <label for="marcaDropdown">Marca :</label>
+                <select id="marcaDropdown" class="form-control" asp-items="ViewBag.Marcas">
+                    <option value="">Selecione una Marca</option>
                 </select>
-                <span asp-validation-for="Modelo.NomModelo" class="text-danger"></span>
+                <span asp-validation-for="Modelo.Marca.NomMarca" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
-               
-                <label for="marcaDropdown">Marca :</label>
-                <select id="marcaDropdown" class="form-control" disabled >
-                    <option value="">Selecione una Marca</option>
+                <label for="modeloDropdown">Modelo :</label>
+                <select asp-for="ModeloId" id="modeloDropdown" class="form-control" disabled>
+                    <option value="">Seleccione Modelo</option>
                 </select>
             </div>
-            
+
+
             <div class="form-floating mb-3">
-                <input asp-for="Anio" type="date" class="form-control" id="anio" placeholder=" " />
+                <input asp-for="Anio"  class="form-control" id="anio" placeholder=" " />
                 <label asp-for="Anio" class="control-label" for="anio">Año</label>
                 <span asp-validation-for="Anio" class="text-danger"></span>
             </div>
@@ -56,7 +58,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Atras</a>
 </div>
 
 @section Scripts {
