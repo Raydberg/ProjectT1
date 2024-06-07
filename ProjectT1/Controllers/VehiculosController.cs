@@ -73,7 +73,7 @@ namespace ProjectT1.Controllers
         // POST: Vehiculos/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Vehiculo vehiculo)
+        public async Task<IActionResult> Create([Bind("IdVehiculo,NroPlaca,IdModelo,Anio,Color,EstPer")] Vehiculo vehiculo)
         {
             if (ModelState.IsValid)
             {
@@ -84,11 +84,15 @@ namespace ProjectT1.Controllers
             return View(vehiculo);
         }
 
-
-
         // GET: Vehiculos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            // Obtén las marcas desde la base de datos
+            var marcas = _context.Marca.ToList();
+
+            // Pasa las marcas a la vista usando ViewBag
+            ViewBag.Marcas = new SelectList(marcas, "IdMarca", "NomMarca");
+
             if (id == null || _context.Vehiculo == null)
             {
                 return NotFound();
@@ -158,7 +162,7 @@ namespace ProjectT1.Controllers
         // POST: Vehiculos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int? id)
         {
             if (_context.Vehiculo == null)
             {

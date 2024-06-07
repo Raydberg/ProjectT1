@@ -99,11 +99,11 @@ namespace ProjectT1.Migrations
                 columns: new[] { "IdVehiculo", "Anio", "Color", "EstPer", "ModeloId", "NroPlaca" },
                 values: new object[,]
                 {
-                    { 1, 2021, "Rojo", "Bueno", 1, "Placa1" },
-                    { 2, 2022, "Azul", "Excelente", 2, "Placa2" },
-                    { 3, 2023, "Amarillo", "Regular", 3, "Placa3" },
-                    { 4, 2024, "Rosado", "Optimo", 4, "Placa4" },
-                    { 5, 2025, "Verde", "Pesimo", 5, "Placa5" }
+                    { 1, 2021, "Rojo", "Optimo", 1, "ABC-1234" },
+                    { 2, 2022, "Azul", "Bueno", 2, "MNO-3141" },
+                    { 3, 2023, "Amarillo", "Caducado", 3, "JKL-1121" },
+                    { 4, 2024, "Rosado", "Buenas Condiciones ", 4, "GHI-9101" },
+                    { 5, 2025, "Verde", "Malo", 5, "XYZ-5678" }
                 });
 
             migrationBuilder.CreateIndex(

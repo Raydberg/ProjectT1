@@ -12,7 +12,7 @@ using ProjectT1.Datos;
 namespace ProjectT1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240607022220_Migracion")]
+    [Migration("20240607043554_Migracion")]
     partial class Migracion
     {
         /// <inheritdoc />
@@ -176,45 +176,45 @@ namespace ProjectT1.Migrations
                             IdVehiculo = 1,
                             Anio = 2021,
                             Color = "Rojo",
-                            EstPer = "Bueno",
+                            EstPer = "Optimo",
                             ModeloId = 1,
-                            NroPlaca = "Placa1"
+                            NroPlaca = "ABC-1234"
                         },
                         new
                         {
                             IdVehiculo = 2,
                             Anio = 2022,
                             Color = "Azul",
-                            EstPer = "Excelente",
+                            EstPer = "Bueno",
                             ModeloId = 2,
-                            NroPlaca = "Placa2"
+                            NroPlaca = "MNO-3141"
                         },
                         new
                         {
                             IdVehiculo = 3,
                             Anio = 2023,
                             Color = "Amarillo",
-                            EstPer = "Regular",
+                            EstPer = "Caducado",
                             ModeloId = 3,
-                            NroPlaca = "Placa3"
+                            NroPlaca = "JKL-1121"
                         },
                         new
                         {
                             IdVehiculo = 4,
                             Anio = 2024,
                             Color = "Rosado",
-                            EstPer = "Optimo",
+                            EstPer = "Buenas Condiciones ",
                             ModeloId = 4,
-                            NroPlaca = "Placa4"
+                            NroPlaca = "GHI-9101"
                         },
                         new
                         {
                             IdVehiculo = 5,
                             Anio = 2025,
                             Color = "Verde",
-                            EstPer = "Pesimo",
+                            EstPer = "Malo",
                             ModeloId = 5,
-                            NroPlaca = "Placa5"
+                            NroPlaca = "XYZ-5678"
                         });
                 });
 

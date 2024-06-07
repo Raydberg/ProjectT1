@@ -32,11 +32,11 @@ namespace ProjectT1.Datos
             );
 
             modelBuilder.Entity<Vehiculo>().HasData(
-                new Vehiculo { IdVehiculo = 1, NroPlaca = "Placa1", ModeloId = 1, Anio = 2021, Color = "Rojo", EstPer = "Bueno" },
-                new Vehiculo { IdVehiculo = 2, NroPlaca = "Placa2", ModeloId = 2, Anio = 2022, Color = "Azul", EstPer = "Excelente" },
-                new Vehiculo { IdVehiculo = 3, NroPlaca = "Placa3", ModeloId = 3, Anio = 2023, Color = "Amarillo", EstPer = "Regular" },
-                new Vehiculo { IdVehiculo = 4, NroPlaca = "Placa4", ModeloId = 4, Anio = 2024, Color = "Rosado", EstPer = "Optimo" },
-                new Vehiculo { IdVehiculo = 5, NroPlaca = "Placa5", ModeloId = 5, Anio = 2025, Color = "Verde", EstPer = "Pesimo" }
+                new Vehiculo { IdVehiculo = 1, NroPlaca = "ABC-1234", ModeloId = 1, Anio = 2021, Color = "Rojo", EstPer="Optimo" },
+                new Vehiculo { IdVehiculo = 2, NroPlaca = "MNO-3141", ModeloId = 2, Anio = 2022, Color = "Azul", EstPer= "Bueno" },
+                new Vehiculo { IdVehiculo = 3, NroPlaca = "JKL-1121", ModeloId = 3, Anio = 2023, Color = "Amarillo" , EstPer="Caducado"  },
+                new Vehiculo { IdVehiculo = 4, NroPlaca = "GHI-9101", ModeloId = 4, Anio = 2024, Color = "Rosado",EstPer ="Buenas Condiciones "},
+                new Vehiculo { IdVehiculo = 5, NroPlaca = "XYZ-5678", ModeloId = 5, Anio = 2025, Color = "Verde" ,EstPer="Malo" }
             );
             base.OnModelCreating(modelBuilder);
         }

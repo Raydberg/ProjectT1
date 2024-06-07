@@ -4,51 +4,64 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Vehiculo</h4>
+<h1>Editar Vehiculo  <i class="fa fa-trash-o" aria-hidden="true"></i></h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="IdVehiculo" />
-            <div class="form-group">
-                <label asp-for="NroPlaca" class="control-label"></label>
-                <input asp-for="NroPlaca" class="form-control" />
+            <div class="form-floating mb-3">
+                <input asp-for="IdVehiculo" id="id_vehiculo" class="form-control" placeholder=" " />
+                <label asp-for="IdVehiculo" for="id_vehiculo" class="control-label">Id Vehiculo</label>
+                <span asp-validation-for="IdVehiculo" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="NroPlaca" class="form-control" id="nro_marca" placeholder=" " />
+                <label asp-for="NroPlaca" class="control-label" for="nro_marca">N°Placa</label>
                 <span asp-validation-for="NroPlaca" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ModeloId" class="control-label"></label>
-                <input asp-for="ModeloId" class="form-control" />
-                <span asp-validation-for="ModeloId" class="text-danger"></span>
+
+
+            <div class="form-group mb-3">
+                <label for="marcaDropdown">Marca :</label>
+                <select id="marcaDropdown" class="form-control" asp-items="ViewBag.Marcas">
+                    <option value="">Selecione una Marca</option>
+                </select>
+                <span asp-validation-for="Modelo.Marca.NomMarca" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Anio" class="control-label"></label>
-                <input asp-for="Anio" class="form-control" />
+
+            <div class="form-group mb-3">
+                <label for="modeloDropdown">Modelo :</label>
+                <select asp-for="ModeloId" id="modeloDropdown" class="form-control" disabled>
+                    <option value="">Seleccione Modelo</option>
+                </select>
+            </div>
+
+
+            <div class="form-floating mb-3">
+                <input asp-for="Anio" class="form-control" id="anio" placeholder=" " />
+                <label asp-for="Anio" class="control-label" for="anio">Año</label>
                 <span asp-validation-for="Anio" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <input asp-for="Color" class="form-control" />
+            <div class="form-floating mb-3">
+                <input asp-for="Color" class="form-control" id="color" placeholder=" " />
+                <label asp-for="Color" class="control-label" for="color">Color</label>
                 <span asp-validation-for="Color" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EstPer" class="control-label"></label>
-                <input asp-for="EstPer" class="form-control" />
-                <span asp-validation-for="EstPer" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-floating mb-3">
+                <input type="submit" value="Editar" class="btn btn-outline-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" asp-action="Index">Volver</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="~/js/Jquery.js"></script>

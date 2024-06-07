@@ -4,9 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>Vehiculo</h4>
+<h1>Crear nuevo Vehiculo <i class="fa fa-car" aria-hidden="true"></i> </h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -50,6 +48,13 @@
                 <label asp-for="Color" class="control-label" for="color">Color</label>
                 <span asp-validation-for="Color" class="text-danger"></span>
             </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="EstPer" class="form-control" id="estado" placeholder=" " />
+                <label asp-for="EstPer" class="control-label" for="estado">Estado</label>
+                <span asp-validation-for="EstPer" class="text-danger"></span>
+            </div>
+
             <div class="form-floating mb-3">
                 <input type="submit" value="Crear" class="btn btn-outline-primary" />
             </div>
